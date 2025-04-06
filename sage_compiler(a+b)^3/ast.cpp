@@ -1,0 +1,1 @@
+// Could be used for AST traversal or optimizations (left empty here)
