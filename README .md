@@ -1,91 +1,84 @@
-# 🧠 Sage Compiler
+🧠 Sage Compiler
 
-A simple compiler project that parses a custom language (with a `.sage` extension) and generates assembly code. The compiler translates basic arithmetic and I/O operations into NASM-compatible assembly. The generated assembly is then assembled using NASM and linked with GoLink to create a Windows executable.
+A simple compiler project that parses a custom language (with a .sage extension) and generates assembly code. The compiler translates basic arithmetic and I/O operations into NASM-compatible assembly. The generated assembly is then assembled using NASM and linked with GoLink to create a Windows executable.
 
-## 🚀 Project Overview
+🚀 Project Overview
 
 The Sage Compiler demonstrates how to:
-- 🧩 Tokenize source code from a custom language.
-- 🌲 Parse tokens into an Abstract Syntax Tree (AST).
-- 🛠️ Generate assembly code from the AST.
-- 🏗️ Build and link the assembly code into a runnable executable.
 
-The project supports simple arithmetic expressions such as computing the expansion of \((a + b)^3 = a^3 + 3a^2b + 3ab^2 + b^3\) as well as basic input/output operations.
+🧩 Tokenize source code from a custom language.
 
-## 📁 File Structure
+🌲 Parse tokens into an Abstract Syntax Tree (AST).
 
-- **asmgen.cpp / asmgen.h**  
-  🛠️ Assembly code generation from the AST.
+🛠️ Generate assembly code from the AST.
 
-- **ast.h**  
-  🌿 Defines the structure of expressions and statements.
+🏗️ Build and link the assembly code into a runnable executable.
 
-- **build.bat**  
-  ⚙️ Script to build and link the compiler and generated assembly.
+The project supports simple arithmetic expressions such as computing the expansion of  as well as basic input/output operations.
 
-- **codegen.cpp / codegen.h**  
-  ✍️ Alternate codegen interface for expression-to-assembly conversion.
+📁 File Structure
 
-- **example.sage**  
-  🧪 Sample Sage source file for testing.
+asmgen.cpp / asmgen.h🛠️ Responsible for generating NASM-compatible assembly code based on the AST structure.
 
-- **main.cpp**  
-  🧵 Entry point tying together the compiler pipeline.
+ast.h🌿 Contains the definition of various expression (Expr) and statement (Stmt) node types used in the AST.
 
-- **parser.cpp / parser.h**  
-  🧱 Stub for parsing tokens into an AST.
+build.bat⚙️ Batch script to compile the C++ compiler components and then assemble/link the output using NASM and GoLink.
 
-- **program.asm**  
-  🧾 Sample generated assembly output.
+codegen.cpp / codegen.h✍️ An alternative approach to generating assembly directly from expressions, used for testing or development.
 
-- **tokenizer.cpp / tokenizer.h**  
-  🔍 Tokenizes the input `.sage` source.
+example.sage🧪 Sample Sage language source file demonstrating input, output, and arithmetic operations.
 
-## 🛠️ Build Instructions
+main.cpp🧵 The main entry point. It reads .sage code, tokenizes, parses, and calls the assembly generator.
 
-1. **Compile the Compiler:**
+parser.cpp / parser.h🧱 Stubs for converting tokens into an AST. Placeholder for future implementation.
 
-   ```bat
-   build.bat
-   ```
+program.asm🧾 An example of a fully written assembly file produced by the compiler.
 
-2. **Generate Assembly:**
+tokenizer.cpp / tokenizer.h🔍 Code responsible for lexical analysis (turning raw source code into a stream of tokens).
 
-   ```bat
-   SageCompiler.exe
-   ```
+golink.exe🧰 GoLink executable used for linking the compiled assembly into a runnable .exe file on Windows.
 
-3. **Assemble the Generated Code:**
+marcos.inc🧩 Contains NASM macros for operations like computing volume, cube expansions, etc.
 
-   ```bat
-   nasm -f win32 Program.asm -o Program.obj
-   ```
+program.exe / program.obj / sage.exe / sage_compiler.exe📦 Generated binary files: object code, executable, and compiler builds.
 
-4. **Link the Object File:**
+🛠️ Build Instructions
 
-   ```bat
-   GoLink /console Program.obj user32.dll kernel32.dll msvcrt.dll
-   ```
+Compile the Compiler:
 
-## 🧪 Usage
+build.bat
 
-- **Input File:**  
-  Edit `example.sage` to modify the logic or output format.
+Generate Assembly:
 
-- **Run Compiler:**  
-  Execute `SageCompiler.exe` to produce `Program.asm`.
+SageCompiler.exe
 
-- **Run Final Program:**  
-  After assembly and linking, run the executable to view results in the console and a MessageBox.
+Assemble the Generated Code:
 
-## 📦 Dependencies
+nasm -f win32 Program.asm -o Program.obj
 
-- 💻 **C++ Compiler:** g++
-- 🧱 **Assembler:** NASM
-- 🔗 **Linker:** GoLink
-- 🪟 **Windows Libraries:** user32.dll, kernel32.dll, msvcrt.dll
+Link the Object File:
 
-## 🔗 Repository
+GoLink /console Program.obj user32.dll kernel32.dll msvcrt.dll
 
-Explore the project and source code on GitHub:  
-👉 [https://github.com/dani6268/cd_assigment](https://github.com/dani6268/cd_assigment)
+🧪 Usage
+
+Input File:Edit example.sage to modify the logic or output format.
+
+Run Compiler:Execute SageCompiler.exe to produce Program.asm.
+
+Run Final Program:After assembly and linking, run the executable to view results in the console and a MessageBox.
+
+📦 Dependencies
+
+💻 C++ Compiler: g++
+
+🧱 Assembler: NASM
+
+🔗 Linker: GoLink
+
+🪟 Windows Libraries: user32.dll, kernel32.dll, msvcrt.dll
+
+🔗 Repository
+
+Explore the project and source code on GitHub:👉 https://github.com/dani6268/cd_assigment
+
