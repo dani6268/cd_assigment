@@ -22,6 +22,21 @@ The project supports simple arithmetic expressions such as computing the expansi
 
 📁 File Structure
 
+example.sage -
+=> (a+b)^3 = a^3 + 3*a^2*b + 3*a*b^2 + b^3
+input a
+input b
+
+let a3  = a * a * a
+let b3  = b * b * b
+let a2b = 3 * a * a * b
+let ab2 = 3 * a * b * b
+
+let result = a3 + b3 + a2b + ab2
+
+print result
+messagebox result
+ 
 asmgen.cpp / asmgen.h🛠️ - Responsible for generating NASM-compatible assembly code based on the AST structure.
 
 ast.h🌿 - Contains the definition of various expression (Expr) and statement (Stmt) node types used in the AST.
